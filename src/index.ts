@@ -23,6 +23,10 @@ app.post("/check-padding", (req, res) => {
     return res.json({ result });
 });
 
+app.get("/", (req, res) => {
+    return res.send('app works');
+});
+
 app.listen(PORT, () =>{
     console.log(`app is running: PORT: ${PORT}`)
 })
