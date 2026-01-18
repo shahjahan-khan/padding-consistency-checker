@@ -6,6 +6,8 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+console.log("ENV CHECK", process.env.PORT);
+
 app.use(express.json())
 
 app.use('/app-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec) )
@@ -24,7 +26,11 @@ app.post("/check-padding", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    return res.send('app works');
+  res.status(200).send("OK");
+});
+
+app.get("/api/health", (req, res) => {
+  res.status(200).send("health OKAY");
 });
 
 app.listen(PORT, () =>{
