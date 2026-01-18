@@ -2,7 +2,9 @@ import express from 'express';
 import swaggerUi from 'swagger-ui-express'
 import { swaggerSpec } from './config/swagger';
 import { checkNumberPadding } from './padding-checker/padding-checker';
+require('dotenv').config();
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json())
 
@@ -21,6 +23,6 @@ app.post("/check-padding", (req, res) => {
     return res.json({ result });
 });
 
-app.listen(3000, () =>{
-    console.log('app is running')
+app.listen(PORT, () =>{
+    console.log(`app is running: PORT: ${PORT}`)
 })
